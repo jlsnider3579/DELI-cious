@@ -7,12 +7,14 @@ public class Sandwich {
     private String breadType;
     private String size;
     private List<Topping> toppings;
+    private boolean isToasted;
 
     // Constructor
-    public Sandwich(String breadType, String size, List<Topping> toppings) {
+    public Sandwich(String breadType, String size, List<Topping> toppings, boolean isToasted) {
         this.breadType = breadType;
         this.size = size;
         this.toppings = toppings;
+        this.isToasted = isToasted;
     }
 
     // Getters and setters
@@ -38,6 +40,14 @@ public class Sandwich {
 
     public void setToppings(List<Topping> toppings) {
         this.toppings = toppings;
+    }
+
+    public boolean isToasted() {
+        return isToasted;
+    }
+
+    public void setToasted(boolean toasted) {
+        isToasted = toasted;
     }
 
     // Method to calculate the total price of the sandwich
