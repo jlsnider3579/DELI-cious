@@ -1,6 +1,4 @@
-package com.pluralsight.sandwhich;
-
-import java.util.List;
+package com.pluralsight.sandwich;
 
 public class Customer {
 

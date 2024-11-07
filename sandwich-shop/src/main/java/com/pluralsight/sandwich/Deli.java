@@ -1,4 +1,4 @@
-package com.pluralsight.sandwhich;
+package com.pluralsight.sandwich;
 
 import java.awt.*;
 import java.util.List;

@@ -1,14 +1,17 @@
-package com.pluralsight.sandwhich;
+package com.pluralsight.sandwich;
 
+// Order class represents an order in a Sandwich shop with order number and receipt details
 public class Order {
     private int orderNumber;
     private String oderReceipt;
 
+    // Constructor
     public Order(int orderNumber, String oderReceipt) {
         this.orderNumber = orderNumber;
         this.oderReceipt = oderReceipt;
     }
 
+    // Getters and setters
     public int getOrderNumber() {
         return orderNumber;
     }
@@ -25,6 +28,7 @@ public class Order {
         this.oderReceipt = oderReceipt;
     }
 
+    // Override toString method to return a string representation of the Order object
     @Override
     public String toString() {
         return "Order{" +
