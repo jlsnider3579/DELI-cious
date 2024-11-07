@@ -42,7 +42,7 @@ public class Customer {
     }
 
     // Method to remove a specific item
-    //public boolean removeOrder(){
+    //public boolean removeItem(){
     // }
 
     // Method to clear the customer's current order
