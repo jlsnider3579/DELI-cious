@@ -1,5 +1,7 @@
 package com.pluralsight.sandwich;
 
+import com.pluralsight.orders.Order;
+
 public class Customer {
 
     // The name of the customer

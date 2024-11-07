@@ -1,8 +1,6 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.orders;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 // Order class represents an order in a Sandwich shop with order number and receipt details
 public class Order {
@@ -10,6 +8,7 @@ public class Order {
     private LocalDateTime timeStamp;
     private String name;
     private static int nextOrderNum = 1;
+
     // Constructor
     public Order() {
         this.timeStamp = LocalDateTime.now();
