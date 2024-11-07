@@ -1,16 +1,19 @@
 package com.pluralsight.sandwich;
 
-public abstract class Toppings {
+// Abstract class representing a topping for a sandwich.
+public class Toppings {
     private String name;
     private ToppingType type;
     private double price;
 
-    public Toppings(String name, ToppingType type, double price) {
+    // Constructor
+    public Toppings(String name, ToppingType type) {
         this.name = name;
         this.type = type;
         this.price = price;
     }
 
+    // Getters and setters
     public String getName() {
         return name;
     }
@@ -35,6 +38,7 @@ public abstract class Toppings {
         this.price = price;
     }
 
+    // Provides a string representation of the topping object
     @Override
     public String toString() {
         return "Topping{" +
