@@ -2,12 +2,14 @@ package com.pluralsight.sandwich;
 
 import java.util.List;
 
+// The Sandwich class represents a sandwich with a specific bread type, size, and a list of toppings.
 public class Sandwich {
     private String breadType;
     private List<String> ingredients;
     private SandwichSize size;
     private boolean isToasted;
 
+    // Constructor
     public Sandwich(String breadType, List<String> ingredients, SandwichSize size, boolean isToasted) {
         this.breadType = breadType;
         this.ingredients = ingredients;
@@ -15,6 +17,7 @@ public class Sandwich {
         this.isToasted = isToasted;
     }
 
+    // Getters and setters
     public String getBreadType() {
         return breadType;
     }

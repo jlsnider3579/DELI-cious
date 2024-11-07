@@ -1,39 +1,49 @@
 package com.pluralsight.sandwich;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 // Order class represents an order in a Sandwich shop with order number and receipt details
 public class Order {
     private int orderNumber;
-    private String oderReceipt;
-
+    private LocalDateTime timeStamp;
+    private String name;
+    private static int nextOrderNum = 1;
     // Constructor
-    public Order(int orderNumber, String oderReceipt) {
-        this.orderNumber = orderNumber;
-        this.oderReceipt = oderReceipt;
+    public Order() {
+        this.timeStamp = LocalDateTime.now();
+        this.name = "valuedCustomer";
+        this.orderNumber = nextOrderNum ++;
     }
-
-    // Getters and setters
     public int getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public LocalDateTime getTimeStamp() {
+        return timeStamp;
     }
 
-    public String getOderReceipt() {
-        return oderReceipt;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setOderReceipt(String oderReceipt) {
-        this.oderReceipt = oderReceipt;
-    }
-
-    // Override toString method to return a string representation of the Order object
     @Override
     public String toString() {
         return "Order{" +
                 "orderNumber=" + orderNumber +
-                ", oderReceipt='" + oderReceipt + '\'' +
+                ", timeStamp=" + timeStamp +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
+
+
+
+
+
+
+
