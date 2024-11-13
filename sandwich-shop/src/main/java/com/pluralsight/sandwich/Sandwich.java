@@ -1,82 +1,61 @@
 package com.pluralsight.sandwich;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-// The Sandwich class represents a sandwich with a specific bread type, size, and a list of toppings.
-public class Sandwich {
-    private BreadType breadType;
-    private List<String> ingredients;
+import java.util.List;
+
+// The Sandwich class implements the Product interface and represents a sandwich with specific properties,
+// including size, bread type, toppings (which include meats and cheeses), and whether it is toasted.
+public class Sandwich implements Product {
     private SandwichSize size;
+    private BreadType bread;
+    private List<Topping> toppings;
+    private List<RegularTop> regToppings;
     private boolean isToasted;
 
-    // Constructor
-    public Sandwich(BreadType breadType, List<String> ingredients, SandwichSize size, boolean isToasted) {
-        this.breadType = breadType;
-        this.ingredients = ingredients;
+    // Constructor for creating a Sandwich object with all its properties
+    public Sandwich(SandwichSize size, BreadType bread,List<Topping> toppings, boolean isToasted, List<RegularTop> regToppings) {
         this.size = size;
+        this.bread = bread;
+        this.toppings = toppings;
         this.isToasted = isToasted;
+        this.regToppings = regToppings;
     }
 
-    // Getters and setters
-    public BreadType getBreadType() {
-        return breadType;
-    }
-
-    public void setBreadType(BreadType breadType) {
-        this.breadType = breadType;
-    }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public SandwichSize getSize() {
-        return size;
-    }
-
-    public void setSize(SandwichSize size) {
-        this.size = size;
-    }
-
-    public boolean isToasted() {
-        return isToasted;
-    }
-
-    public void setToasted(boolean toasted) {
-        isToasted = toasted;
-    }
-
-    private Map<SandwichSize, Double> pricesBySize = Map.of(SandwichSize.SMALL, 2.,
-            SandwichSize.MEDIUM, 4., SandwichSize.LARGE, 6.);
-
+    // Method to calculate the price of the sandwich.
+    // Currently, the price is based on the size of the sandwich, bread, and toppings.
+    @Override
     public double getPrice() {
-        double costOfSandwich = 0;
+        double price = getBreadPrice();  // Base price for the bread based on size
+        return price;
+    }
 
+    // Private helper method to return the price of the bread based on the sandwich size
 
-                costOfSandwich += pricesBySize.get(size);
-                // Add cost of premium toppings
-
-
-
-        return costOfSandwich;
+    private double getBreadPrice() {
+        switch (size) {
+            case SMALL:
+                return 5.50;
+            case MEDIUM:
+                return 7.00;
+            case LARGE:
+                return 8.50;
+            default:
+                return 0.0;
+        }
     }
 
     @Override
     public String toString() {
         return "Sandwich{" +
-                "breadType=" + breadType +
-                ", ingredients=" + ingredients +
-                ", size=" + size +
+                "size=" + size +
+                ", bread=" + bread +
+                ", toppings=" + toppings +
                 ", isToasted=" + isToasted +
                 '}';
     }
 }
+
+
 
 
 
