@@ -1,7 +1,6 @@
 package com.pluralsight.userinterface;
 
 import com.pluralsight.sandwich.BreadType;
-import com.pluralsight.sandwich.ToppingType;
 
 import java.util.Scanner;
 
