@@ -1,13 +1,17 @@
 package com.pluralsight.userinterface;
 
+import com.pluralsight.sandwich.BreadType;
+import com.pluralsight.sandwich.ToppingType;
+
 import java.util.Scanner;
 
 public class UserInterface {
     Scanner s = new Scanner(System.in);
-    boolean uInput = true;
+
 
 
     public void homeScreen() {
+        boolean uInput = true;
         while (uInput) {
             System.out.println("""
                     Welcome to DELI-cious Sandwich Shop
@@ -33,6 +37,7 @@ public class UserInterface {
     }
 
     public void orderScreen() {
+        boolean uInput = true;
         while (uInput) {
             System.out.println("""
                     1) Add Sandwich
@@ -58,15 +63,15 @@ public class UserInterface {
                 case "4":
                     checkout();
                     break;
-                case"5":
+                case "5":
                     System.out.println();
-                    homeScreen();
+                    uInput = false;
                     break;
                 case "0":
                     cancelOrder();
                     break;
                 default:
-                    uInput = false;
+
                     System.out.println("Sorry that was an invalid response");
                     break;
 
@@ -74,20 +79,78 @@ public class UserInterface {
         }
     }
 
-    public void addSandwich(){
+    public void addSandwich() {
+        boolean uInput = true;
+        //System.out.println("Please select a bread type:");
+
+        //for (BreadType bread: BreadType.values()){
+        //  System.out.println(bread.getName());
+        //System.out.println("""
+              //  White
+              //  Wheat
+              //  Rye
+               // Wrap
+
+
+               // """);
+
+        BreadType selectedBread = null;
+        boolean exitCondition = true;
+        do {
+            System.out.println("Please select a bread type:");
+            System.out.println("""
+                White
+                Wheat
+                Rye
+                Wrap
+                
+                
+                """);
+            String userInput = s.nextLine().toUpperCase();
+            try {
+                selectedBread = BreadType.valueOf(userInput);
+                System.out.printf("You selected: %s%n", selectedBread.getName());
+                exitCondition = false;
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid choice please chose again");
+            }
+
+        } while (exitCondition);
+
+        ToppingType selectedTopping = null;
+        boolean exitCondition2 = true;
+
+        do {
+            System.out.println("""
+                Please select your toppings
+                White
+                Wheat
+                Rye
+                Wrap
+                
+                
+                """);
+
+        }
+
 
     }
-    public void addDrink(){
+
+    public void addDrink() {
 
     }
-    public void addChips(){
+
+    public void addChips() {
 
     }
-    public void checkout(){
+
+    public void checkout() {
 
     }
-    public void cancelOrder(){
+
+    public void cancelOrder() {
 
     }
+
 }
-
