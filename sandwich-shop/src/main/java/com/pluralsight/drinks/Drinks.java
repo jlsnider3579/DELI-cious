@@ -1,37 +1,50 @@
 package com.pluralsight.drinks;
 
-import java.util.List;
 
-public class Drinks {
-    private List<Drinks> drinksList;
-    private DrinkSize size;
+import com.pluralsight.sandwich.Product;
 
-    public Drinks(List<Drinks> drinksList, DrinkSize size) {
-        this.drinksList = drinksList;
-        this.size = size;
+// The Drink class implements the Product interface and represents a drink with a specific size and type.
+// It allows for calculating the price based on the drink size and provides details about the drink.
+public class Drink implements Product {
+    private DrinkSize Drinksize;
+    private DrinkType drinkType;
+
+    // Constructor for creating a Drink object with its size and type
+    public Drink(DrinkSize Drinksize, DrinkType drinkType) {
+        this.Drinksize = Drinksize;
+        this.drinkType = drinkType;
     }
 
-    public List<Drinks> getDrinksList() {
-        return drinksList;
-    }
+    // Method to calculate the price of the drink.
+    // This price is based on the size of the drink (e.g., SMALL, MEDIUM, LARGE).
+    @Override
+    public double getPrice() {
+        double price = getDrinkPrice();
+        return price;
 
-    public void setDrinksList(List<Drinks> drinksList) {
-        this.drinksList = drinksList;
     }
-
-    public DrinkSize getSize() {
-        return size;
-    }
-
-    public void setSize(DrinkSize size) {
-        this.size = size;
+    public double getDrinkPrice(){
+        switch (Drinksize) {
+            case SMALL -> {
+                return 2.00;
+            }
+            case MEDIUM -> {
+                return 2.50;
+            }
+            case LARGE -> {
+                return 3.00;
+            }
+            default -> {
+                return 0.0;
+            }
+        }
     }
 
     @Override
     public String toString() {
-        return "Drinks{" +
-                "drinksList=" + drinksList +
-                ", size=" + size +
-                '}';
+        return "Drink [size=" + Drinksize + ", type=" + drinkType + "]";
     }
 }
+
+
+
