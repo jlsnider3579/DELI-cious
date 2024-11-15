@@ -1,6 +1,8 @@
 package com.pluralsight.sandwich;
 
 
+import com.pluralsight.toppings.*;
+
 import java.util.List;
 
 // The Sandwich class implements the Product interface and represents a sandwich with specific properties,
@@ -9,15 +11,19 @@ public class Sandwich implements Product {
     private SandwichSize size;
     private BreadType bread;
     private List<Topping> toppings;
-    private List<RegularTop> regToppings;
+    private List<MeatType> meatTypes;
+    private List<CheeseType> cheeseTypes;
+    private List<RegularToppingType> regToppings;
     private boolean isToasted;
 
     // Constructor for creating a Sandwich object with all its properties
-    public Sandwich(SandwichSize size, BreadType bread,List<Topping> toppings, boolean isToasted, List<RegularTop> regToppings) {
+    public Sandwich(SandwichSize size, BreadType bread, List<Topping> toppings, boolean isToasted, List<MeatType> meatTypes, List<CheeseType> cheeseTypes, List<RegularToppingType> regToppings) {
         this.size = size;
         this.bread = bread;
         this.toppings = toppings;
         this.isToasted = isToasted;
+        this.meatTypes = meatTypes;
+        this.cheeseTypes = cheeseTypes;
         this.regToppings = regToppings;
     }
 
@@ -25,9 +31,22 @@ public class Sandwich implements Product {
     // Currently, the price is based on the size of the sandwich, bread, and toppings.
     @Override
     public double getPrice() {
-        double price = getBreadPrice();  // Base price for the bread based on size
+
+
+        double price = 0;
+
+        price += getBreadPrice();  // Base price for the bread based on size
+
+
+        // get meats price
+
+
+        //get cheese
+
+
         return price;
     }
+
 
     // Private helper method to return the price of the bread based on the sandwich size
 
@@ -50,8 +69,29 @@ public class Sandwich implements Product {
                 "size=" + size +
                 ", bread=" + bread +
                 ", toppings=" + toppings +
+                ", typeOfMeats=" + meatTypes +
+                ", typeOfCheeses=" + cheeseTypes +
+                ", regToppings=" + regToppings +
                 ", isToasted=" + isToasted +
                 '}';
+    }
+
+    @Override
+    public String getCsvString() {
+        StringBuilder sB = new StringBuilder();
+        for (MeatType m : meatTypes)
+            // TODO make sure that csv representation is formatted
+            sB.append(String.format("%s \n", m));
+
+        for (CheeseType c : cheeseTypes)
+            sB.append(String.format("%s \n", c));
+
+        for (RegularToppingType r : regToppings)
+            sB.append(String.format("%s \n", r));
+
+        return sB.toString();
+
+
     }
 }
 

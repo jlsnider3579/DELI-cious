@@ -1,4 +1,6 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
+
+import com.pluralsight.sandwich.SandwichSize;
 
 // The PremiumTopping class is an abstract subclass of the Topping class.
 // It represents a premium topping that can be added to a sandwich.

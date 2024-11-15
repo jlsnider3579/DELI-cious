@@ -1,4 +1,7 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
+
+import com.pluralsight.sandwich.Product;
+import com.pluralsight.sandwich.SandwichSize;
 
 // The Topping class is an abstract class that implements the Product interface.
 // It represents a topping that can be added to a sandwich (e.g., cheese, lettuce, bacon, etc.).

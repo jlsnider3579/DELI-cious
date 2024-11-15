@@ -1,4 +1,4 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.chips;
 
 public enum ChipsType {
     LAYS,

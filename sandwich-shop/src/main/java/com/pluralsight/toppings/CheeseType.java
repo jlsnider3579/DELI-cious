@@ -1,7 +1,7 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
 
 // Enum class that holds constants of type of cheese
-public enum TypeOfCheese {
+public enum CheeseType {
     AMERICAN,
     PROVOLONE,
     CHEDDAR,

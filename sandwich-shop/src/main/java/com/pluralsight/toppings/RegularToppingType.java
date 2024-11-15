@@ -1,7 +1,7 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
 
 // Enum class that hold my constants for regular toppings
-public enum RegularTop {
+public enum RegularToppingType {
     LETTUCE,
     PEPPERS,
     ONIONS,

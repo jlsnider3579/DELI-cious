@@ -1,12 +1,12 @@
 package com.pluralsight.sandwich;
-import com.pluralsight.userinterface.UserInterface;
+import com.pluralsight.userinterface.UserInterFace;
+
 
 public class Program {
-        public static void main(String[] args) {
-            UserInterface ui = new UserInterface();
-            ui.homeScreen();
-
-        }
+    public static void main(String[] args) {
+        UserInterFace uI = new UserInterFace();
+        uI.homeScreen();
     }
+}
 
 

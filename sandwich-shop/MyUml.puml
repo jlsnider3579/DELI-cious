@@ -1,0 +1,170 @@
+@startuml
+enum com.pluralsight.chips.ChipsType {
++  LAYS
++  DORITOS
++  BBQ
++  SALT_N_VINEGAR
+}
+
+class com.pluralsight.toppings.Cheese {
+- TypeOfCheese cheeseType
++ <<Create>> Cheese(SandwichSize,boolean,TypeOfCheese)
++ double getPrice()
++ TypeOfCheese getCheeseType()
+}
+
+
+enum com.pluralsight.drinks.DrinkSize {
++  SMALL
++  MEDIUM
++  LARGE
+}
+
+enum com.pluralsight.toppings.RegularTop {
++  LETTUCE
++  PEPPERS
++  ONIONS
++  TOMATOES
++  JALEPENOS
++  CUCUMBERS
++  PICKLES
++  GUACAMOLE
++  MUSHROOMS
++  MAYO
++  MUSTARD
+}
+
+class com.pluralsight.userinterface.UserInterFace {
+~ Scanner s
+~ Order order
+- List<Topping> toppings
+~ ArrayList<RegularTop> regToppings
++ void homeScreen()
++ void orderScreen()
++ void addSandwich()
+- SandwichSize chooseSandwichSize()
+- BreadType chooseBreadType()
+- void chooseMeatType(SandwichSize)
+- void chooseCheeseType(SandwichSize)
+- {static} double getCheesePriceBySandwichSize(SandwichSize)
+- void chooseToppings()
++ boolean isToasted()
+- void addDrink()
+- DrinkSize drinkSize()
++ void getTotalPrice()
+}
+
+
+abstract class com.pluralsight.toppings.Topping {
+# boolean hasExtra
+# SandwichSize size
++ <<Create>> Topping(SandwichSize,boolean)
++ {abstract}double getPrice()
+}
+
+
+enum com.pluralsight.sandwich.BreadType {
++  WHITE
++  WHEAT
++  RYE
++  WRAP
+}
+
+abstract class com.pluralsight.toppings.PremiumTopping {
+# double price
++ <<Create>> PremiumTopping(SandwichSize,boolean)
++ double getPrice()
+}
+
+
+class com.pluralsight.sandwich.Program {
++ {static} void main(String[])
+}
+
+interface com.pluralsight.sandwich.Product {
+~ double getPrice()
+}
+
+class com.pluralsight.toppings.Meat {
+- TypeOfMeat meatType
++ <<Create>> Meat(SandwichSize,boolean,TypeOfMeat)
++ double getPrice()
++ TypeOfMeat getMeatType()
+}
+
+
+class com.pluralsight.orders.Order {
+- ArrayList<Product> items
+- double totalPrice
++ <<Create>> Order()
++ void addItem(Product)
++ double getTotalPrice()
++ String toString()
+}
+
+
+enum com.pluralsight.drinks.DrinkType {
+}
+enum com.pluralsight.sandwich.SandwichSize {
++  SMALL
++  MEDIUM
++  LARGE
+}
+
+class com.pluralsight.chips.Chips {
+- ChipsType type
++ <<Create>> Chips(ChipsType)
++ double getPrice()
++ String toString()
+}
+
+
+enum com.pluralsight.toppings.TypeOfCheese {
++  AMERICAN
++  PROVOLONE
++  CHEDDAR
++  SWISS
+}
+
+class com.pluralsight.sandwich.Sandwich {
+- SandwichSize size
+- BreadType bread
+- List<Topping> toppings
+- List<RegularTop> regToppings
+- boolean isToasted
++ <<Create>> Sandwich(SandwichSize,BreadType,List<Topping>,boolean,List<RegularTop>)
++ double getPrice()
+- double getBreadPrice()
++ String toString()
+}
+
+
+enum com.pluralsight.toppings.TypeOfMeat {
++  STEAK
++  HAM
++  SALAMI
++  ROAST_BEEF
++  CHICKEN
++  BACON
+}
+
+class com.pluralsight.drinks.Drink {
+- DrinkSize Drinksize
+- DrinkType drinkType
++ <<Create>> Drink(DrinkSize,DrinkType)
++ double getPrice()
++ double getDrinkPrice()
++ String toString()
+}
+
+
+
+
+com.pluralsight.toppings.PremiumTopping <|-- com.pluralsight.toppings.Cheese
+com.pluralsight.sandwich.Product <|.. com.pluralsight.toppings.Topping
+com.pluralsight.toppings.Topping <|-- com.pluralsight.toppings.PremiumTopping
+com.pluralsight.toppings.PremiumTopping <|-- com.pluralsight.toppings.Meat
+com.pluralsight.sandwich.Product <|.. com.pluralsight.chips.Chips
+com.pluralsight.sandwich.Product <|.. com.pluralsight.sandwich.Sandwich
+com.pluralsight.sandwich.Product <|.. com.pluralsight.drinks.Drink
+@enduml

@@ -1,7 +1,7 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
 
 // Enum class that hold constants types of meat
-public enum TypeOfMeat {
+public enum MeatType {
     STEAK,
     HAM,
     SALAMI,

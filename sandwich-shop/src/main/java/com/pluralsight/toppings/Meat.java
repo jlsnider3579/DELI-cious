@@ -1,14 +1,16 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
+
+import com.pluralsight.sandwich.SandwichSize;
 
 // The Meat class represents a meat topping, which is a type of PremiumTopping.
 // It extends the PremiumTopping class and adds logic for calculating the price of the meat
 // based on the sandwich size and whether it is considered an "extra" topping.
 // Additionally, it keeps track of the type of meat used in the sandwich.
 public class Meat extends PremiumTopping {
-    private TypeOfMeat meatType;
+    private MeatType meatType;
 
     // Constructor for creating a Meat object with a specific sandwich size, extra flag, and meat type.
-    public Meat(SandwichSize size, boolean hasExtra, TypeOfMeat meatType) {
+    public Meat(SandwichSize size, boolean hasExtra, MeatType meatType) {
         super(size, hasExtra);
         this.meatType = meatType;
     }
@@ -27,7 +29,13 @@ public class Meat extends PremiumTopping {
         }
     }
 
-    public TypeOfMeat getMeatType() {
+    @Override
+    public String getCsvString() {
+        // TODO fix this
+        return " meat type, has extra, price";
+    }
+
+    public MeatType getMeatType() {
         return meatType;
     }
 }

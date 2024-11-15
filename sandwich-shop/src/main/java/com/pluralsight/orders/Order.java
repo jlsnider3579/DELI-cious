@@ -30,6 +30,16 @@ public class Order {
         return totalPrice;
     }
 
+
+    public String toCsvString(){
+        StringBuilder sB = new StringBuilder();
+        for (Product p: items) {
+            sB.append(p.getCsvString());
+        }
+
+        return sB.toString();
+    }
+
     @Override
     public String toString() {
         return "Order with total price: " + getTotalPrice();

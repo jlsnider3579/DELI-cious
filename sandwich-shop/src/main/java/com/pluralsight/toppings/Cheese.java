@@ -1,14 +1,16 @@
-package com.pluralsight.sandwich;
+package com.pluralsight.toppings;
+
+import com.pluralsight.sandwich.SandwichSize;
 
 // The Cheese class represents a cheese topping, which is a type of PremiumTopping.
 // It extends the PremiumTopping class and adds logic for calculating the price of the cheese
 // based on the sandwich size and whether it is considered an "extra" topping.
 // Additionally, it includes the type of cheese used in the sandwich.
 public class Cheese extends PremiumTopping {
-    private TypeOfCheese cheeseType;
+    private CheeseType cheeseType;
 
     // Constructor for creating a Cheese object with a specific sandwich size, extra flag, and cheese type.
-    public Cheese(SandwichSize size, boolean hasExtra, TypeOfCheese cheeseType) {
+    public Cheese(SandwichSize size, boolean hasExtra, CheeseType cheeseType) {
         super(size, hasExtra);
         this.cheeseType = cheeseType;
     }
@@ -31,7 +33,13 @@ public class Cheese extends PremiumTopping {
         }
     }
 
-    public TypeOfCheese getCheeseType() {
+    @Override
+    public String getCsvString() {
+        // TODO - fix this to return proper string for receipt
+        return "";
+    }
+
+    public CheeseType getCheeseType() {
         return cheeseType;
     }
 }
