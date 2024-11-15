@@ -11,6 +11,11 @@ public class ChipView {
     public void addChip(Order order) {
         boolean validInput = false; // Set to false initially to enter the loop
         Chips selectedChip = null;  // This will hold the selected Chips object
+        Chips chips = new Chips(ChipsType.DORITOS);
+        Chips chips1 = new Chips(ChipsType.BBQ);
+        Chips chips2 = new Chips(ChipsType.SALT_N_VINEGAR);
+        Chips chips3 = new Chips(ChipsType.LAYS);
+
 
         while (!validInput) {
             System.out.println("""
@@ -55,6 +60,8 @@ public class ChipView {
         // After valid input, you can now use the `selectedChip` object
         if (selectedChip != null) {
             System.out.println("You selected: " + selectedChip.getStringForReceipt());
+
+            order.addItem(selectedChip);
         }
     }
 }

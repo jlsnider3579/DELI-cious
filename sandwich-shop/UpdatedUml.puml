@@ -56,18 +56,11 @@ enum com.pluralsight.drinks.DrinkSize {
 class com.pluralsight.userinterface.UserInterFace {
 ~ Scanner s
 ~ Order order
-- List<Topping> toppings
-~ ArrayList<MeatType> meatTypes
-~ ArrayList<CheeseType> cheeseTypes
-~ ArrayList<RegularToppingType> regToppings
 ~ SandwichView sandwichView
 ~ DrinkView drinkView
 ~ ChipView chipView
 + void homeScreen()
 + void orderScreen()
-+ void cancelOrder(Order)
-- DrinkSize drinkSize()
-+ void getTotalPrice()
 }
 
 
@@ -113,7 +106,6 @@ class com.pluralsight.userinterface.method.addSandwich.SandwichView {
 - BreadType chooseBreadType()
 + {static} double getMeatPriceBySize(SandwichSize)
 - void chooseOneOrMoreMeatTypes(SandwichSize)
-- boolean itsAnInteger(String)
 - boolean askUserIfTheyWantExtra(SandwichSize)
 + {static} double getExtraMeatPrice(SandwichSize)
 - void chooseOneOrMoreCheeseTypes(SandwichSize)
@@ -150,10 +142,6 @@ class com.pluralsight.orders.Order {
 
 
 enum com.pluralsight.drinks.DrinkType {
-+  Lemonade
-+  Coke
-+  Pepsi
-+  Sprite
 +  FRUIT_PUNCH
 +  SPRITE
 +  PEPSI

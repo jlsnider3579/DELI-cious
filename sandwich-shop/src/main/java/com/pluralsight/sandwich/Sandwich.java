@@ -40,8 +40,6 @@ public class Sandwich implements Product {
     // Currently, the price is based on the size of the sandwich, bread, and toppings.
     @Override
     public double getPrice() {
-
-
         double price = 0;
 
         // Add the price of the bread to the total price.
@@ -93,7 +91,7 @@ public class Sandwich implements Product {
         sb.append(bread).append("\n").append(size).append("\n");
 
         for (MeatType m : meatTypes)
-            // TODO make sure that csv representation is formatted
+
             sb.append(String.format("%s \n", m));
 
         for (CheeseType c : cheeseTypes)

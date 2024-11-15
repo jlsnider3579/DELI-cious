@@ -1,7 +1,7 @@
-WHEAT
-MEDIUM
-STEAK 
-HAM 
-AMERICAN 
-LETTUCE 
-total price: $12.50 
+Chips:
+SALT_N_VINEGAR  $1.50
+
+Total Price: $3.00Chips:
+DORITOS         $1.50
+
+Total Price: $3.00total price: $3.00 

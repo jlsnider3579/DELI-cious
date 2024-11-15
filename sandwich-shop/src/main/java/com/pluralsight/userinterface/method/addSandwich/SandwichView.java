@@ -142,6 +142,7 @@ public class SandwichView {
         System.out.println("You selected " + selectedBreadType + " BREAD ");
         return selectedBreadType;
     }
+
     // Method to determine the price of meat based on sandwich size
     public static double getMeatPriceBySize(SandwichSize sandwichSize) {
         double meatPrice = 0;
@@ -166,6 +167,7 @@ public class SandwichView {
         return meatPrice;
     }
 
+    // Allows for user to choose on or more
     private void chooseOneOrMoreMeatTypes(SandwichSize sandwichSize) {
         MeatType selectedMeatType = null;
         boolean tryAgain = true;
@@ -223,7 +225,7 @@ public class SandwichView {
                     }
                 }
 
-                if( meatType == null) continue;
+                if (meatType == null) continue;
 
                 Meat m = new Meat(sandwichSize, false, meatType);
                 toppings.add(m);
@@ -231,10 +233,10 @@ public class SandwichView {
                 System.out.println("You selected: " + meatType);
                 boolean hasExtra = askUserIfTheyWantExtra(sandwichSize);
                 m.setHasExtra(hasExtra);
-                meatPrice +=  m.getPrice();
+                meatPrice += m.getPrice();
             }
 
-            System.out.println(meatPrice);
+            System.out.println(" $ " + meatPrice);
             tryAgain = false;
 
 
@@ -242,7 +244,7 @@ public class SandwichView {
 
     }
 
-
+    // Ask if they would like extra
     private boolean askUserIfTheyWantExtra(SandwichSize sandwichSize) {
         boolean validInput;
         double extraMeatPrice = 0;
@@ -280,6 +282,7 @@ public class SandwichView {
         return hasExtra;
     }
 
+    // Get the extra price
     public static double getExtraMeatPrice(SandwichSize sandwichSize) {
         double extraMeatPrice = 0;
         switch (sandwichSize) {
@@ -304,6 +307,7 @@ public class SandwichView {
         return extraMeatPrice;
     }
 
+    // Allow the user to chose one or more
     private void chooseOneOrMoreCheeseTypes(SandwichSize sandwichSize) {
 
         CheeseType selectedCheeseType = null;
@@ -356,12 +360,12 @@ public class SandwichView {
                             default -> System.out.println("Invalid choice, please choose a number between 1 and 4.");
                         }
                     }
-                    System.out.println(cheesePrice);
+
                 } else {
                     System.out.println("Invalid input, please enter a number.");
                     s.nextLine();  // Clear the invalid input
                 }
-                System.out.println(" You selected " + cheeseTypes);
+
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input try again");
             }
@@ -434,6 +438,7 @@ public class SandwichView {
                 cheesePrice = 2.25;
                 System.out.println(" $ " + cheesePrice);
             }
+
         }
         return cheesePrice;
     }
@@ -547,7 +552,7 @@ public class SandwichView {
         boolean toasted = false;
         while (!validInput) {
             System.out.println("""
-                    Would you Like your sandwich toasted?
+                    \nWould you Like your sandwich toasted?
                     1. Yes
                     2. No
                     """);

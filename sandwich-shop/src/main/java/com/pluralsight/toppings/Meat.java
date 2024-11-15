@@ -32,7 +32,7 @@ public class Meat extends PremiumTopping {
 
     @Override
     public String getStringForReceipt() {
-        // TODO fix this
+
         return " meat type, has extra, price";
     }
 

@@ -36,7 +36,7 @@ public class Cheese extends PremiumTopping {
 
     @Override
     public String getStringForReceipt() {
-        // TODO - fix this to return proper string for receipt
+
         return "";
     }
 

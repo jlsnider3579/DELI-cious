@@ -22,7 +22,7 @@ public class Chips implements Product {
 
     @Override
     public String getStringForReceipt() {
-        return "Chips: \n" + type + " \n$ " + getPrice();
+        return String.format("Chips:\n%-15s $%.2f", type, getPrice());
     }
 
     @Override

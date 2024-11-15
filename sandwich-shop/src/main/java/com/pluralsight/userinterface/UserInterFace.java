@@ -1,29 +1,23 @@
 package com.pluralsight.userinterface;
 
+// Import necessary classes for data management and UI components
 import com.pluralsight.dataManager.DataManager;
-import com.pluralsight.drinks.DrinkSize;
 import com.pluralsight.userinterface.method.addDrink.DrinkView;
 import com.pluralsight.orders.Order;
-import com.pluralsight.toppings.*;
 import com.pluralsight.userinterface.method.addSandwich.SandwichView;
 import com.pluralsight.userinterface.method.chips.ChipView;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserInterFace {
+
+    // Instances of views to add sandwich, drink, and chips to the order
     Scanner s = new Scanner(System.in);
     Order order;
-    private List<Topping> toppings = new ArrayList<>();
-    ArrayList<MeatType> meatTypes = new ArrayList<>();
-    ArrayList<CheeseType> cheeseTypes;
-    ArrayList<RegularToppingType> regToppings = new ArrayList<>();
     SandwichView sandwichView = new SandwichView();
     DrinkView drinkView = new DrinkView();
     ChipView chipView = new ChipView();
 
-
+    // Method to display the home screen where users can start a new order or exit
     public void homeScreen() {
         boolean uInput = true;
         while (uInput) {
@@ -50,12 +44,12 @@ public class UserInterFace {
         }
     }
 
+    // Method to display the order screen where users can add items to the order
     public void orderScreen() {
 
         boolean uInput = true;
         while (uInput) {
             System.out.println("""
-                    
                     \n1) Add sandwich
                     2) Add Drink
                     3) Add Chips
