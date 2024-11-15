@@ -25,7 +25,7 @@ public class SandwichView {
         // Allow the user to choose meats, cheese, and toppings
         chooseOneOrMoreMeatTypes(sandwichSize);
         chooseOneOrMoreCheeseTypes(sandwichSize);
-        chooseToppings();
+        chooseOneOrMoreToppings();
 
         // Create a new sandwich object with all selected options
         Sandwich sandwich = new Sandwich(sandwichSize, bread, toppings, isToasted(), meatTypes, cheeseTypes, regularToppingTypes);
@@ -443,7 +443,7 @@ public class SandwichView {
         return cheesePrice;
     }
 
-    private void chooseToppings() {
+    private void chooseOneOrMoreToppings() {
 
         RegularToppingType selectedToppingType = null;
 
