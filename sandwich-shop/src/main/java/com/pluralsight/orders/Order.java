@@ -34,11 +34,7 @@ public class Order {
         StringBuilder sB = new StringBuilder();
         for (Product p: items) {
             sB.append(p.getStringForReceipt()).append("\n");
-
-            // Append the total price at the bottom of the receipt
-            sB.append("\nTotal Price: $").append(String.format("%.2f", getPrice()));
         }
-
         return sB.toString();
     }
 

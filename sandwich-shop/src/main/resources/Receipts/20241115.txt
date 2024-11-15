@@ -1,7 +1,16 @@
+Sandwich:
+Bread: WHITE           Size: MEDIUM    
+Meats:
+  STEAK          
+Cheeses:
+  AMERICAN       
+  CHEDDAR        
+  PROVOLONE      
+Toppings:
+  LETTUCE        
+  PEPPERS        
+  ONIONS         
+
 Chips:
-SALT_N_VINEGAR  $1.50
-
-Total Price: $3.00Chips:
-DORITOS         $1.50
-
-Total Price: $3.00total price: $3.00 
+LAYS            $1.50
+total price: $12.00 

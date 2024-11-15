@@ -88,21 +88,37 @@ public class Sandwich implements Product {
     public String getStringForReceipt() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(bread).append("\n").append(size).append("\n");
+        // Start with "Sandwich:" at the top
+        sb.append("Sandwich:\n");
 
-        for (MeatType m : meatTypes)
+        // Display bread and size
+        sb.append(String.format("Bread: %-15s Size: %-10s\n", bread, size));
 
-            sb.append(String.format("%s \n", m));
+        // Loop through meat types
+        if (!meatTypes.isEmpty()) {
+            sb.append("Meats:\n");
+            for (MeatType m : meatTypes) {
+                sb.append(String.format("  %-15s\n", m));
+            }
+        }
 
-        for (CheeseType c : cheeseTypes)
-            sb.append(String.format("%s \n", c));
+        // Loop through cheese types
+        if (!cheeseTypes.isEmpty()) {
+            sb.append("Cheeses:\n");
+            for (CheeseType c : cheeseTypes) {
+                sb.append(String.format("  %-15s\n", c));
+            }
+        }
 
-        for (RegularToppingType r : regToppings)
-            sb.append(String.format("%s \n", r));
+        // Loop through regular toppings
+        if (!regToppings.isEmpty()) {
+            sb.append("Toppings:\n");
+            for (RegularToppingType r : regToppings) {
+                sb.append(String.format("  %-15s\n", r));
+            }
+        }
 
         return sb.toString();
-
-
     }
 }
 
