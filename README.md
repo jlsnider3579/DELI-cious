@@ -41,9 +41,10 @@
 * Setup - Ensure you have Java installed and configured on your system.
 * Compilation - Compile the Java files.
 
-########## Screens
+ 
 ![Screenshot 2024-11-15 084441](https://github.com/user-attachments/assets/9d1c7b35-af4b-4336-9de2-7acf41f6da7f)
 
-########## Interesting code
+
 ![image](https://github.com/user-attachments/assets/f43e0465-a8f3-4ae4-9ef6-f91af09560b7)
-*It's not neseccarily the code, but the class itself I like how theres a way to use one method to work amongst other classes returning different values
+
+* It's not neseccarily the code, but the class itself I like how theres a way to use one method to work amongst other classes returning different values
