@@ -1,0 +1,7 @@
+WHEAT
+MEDIUM
+STEAK 
+HAM 
+AMERICAN 
+LETTUCE 
+total price: $12.50 

@@ -1,4 +1,14 @@
 @startuml
+class com.pluralsight.dataManager.DataManager {
++ {static} void createReceipt(Order)
+}
+
+class com.pluralsight.userinterface.method.chips.ChipView {
+~ Scanner s
++ void addChip(Order)
+}
+
+
 enum com.pluralsight.chips.ChipsType {
 +  LAYS
 +  DORITOS
@@ -7,20 +17,14 @@ enum com.pluralsight.chips.ChipsType {
 }
 
 class com.pluralsight.toppings.Cheese {
-- TypeOfCheese cheeseType
-+ <<Create>> Cheese(SandwichSize,boolean,TypeOfCheese)
+- CheeseType cheeseType
 + double getPrice()
-+ TypeOfCheese getCheeseType()
++ String getStringForReceipt()
++ CheeseType getCheeseType()
 }
 
 
-enum com.pluralsight.drinks.DrinkSize {
-+  SMALL
-+  MEDIUM
-+  LARGE
-}
-
-enum com.pluralsight.toppings.RegularTop {
+enum com.pluralsight.toppings.RegularToppingType {
 +  LETTUCE
 +  PEPPERS
 +  ONIONS
@@ -34,22 +38,34 @@ enum com.pluralsight.toppings.RegularTop {
 +  MUSTARD
 }
 
+enum com.pluralsight.toppings.MeatType {
++  STEAK
++  HAM
++  SALAMI
++  ROAST_BEEF
++  CHICKEN
++  BACON
+}
+
+enum com.pluralsight.drinks.DrinkSize {
++  SMALL
++  MEDIUM
++  LARGE
+}
+
 class com.pluralsight.userinterface.UserInterFace {
 ~ Scanner s
 ~ Order order
 - List<Topping> toppings
-~ ArrayList<RegularTop> regToppings
+~ ArrayList<MeatType> meatTypes
+~ ArrayList<CheeseType> cheeseTypes
+~ ArrayList<RegularToppingType> regToppings
+~ SandwichView sandwichView
+~ DrinkView drinkView
+~ ChipView chipView
 + void homeScreen()
 + void orderScreen()
-+ void addSandwich()
-- SandwichSize chooseSandwichSize()
-- BreadType chooseBreadType()
-- void chooseMeatType(SandwichSize)
-- void chooseCheeseType(SandwichSize)
-- {static} double getCheesePriceBySandwichSize(SandwichSize)
-- void chooseToppings()
-+ boolean isToasted()
-- void addDrink()
++ void cancelOrder(Order)
 - DrinkSize drinkSize()
 + void getTotalPrice()
 }
@@ -58,8 +74,18 @@ class com.pluralsight.userinterface.UserInterFace {
 abstract class com.pluralsight.toppings.Topping {
 # boolean hasExtra
 # SandwichSize size
-+ <<Create>> Topping(SandwichSize,boolean)
++ boolean isHasExtra()
++ void setHasExtra(boolean)
 + {abstract}double getPrice()
+}
+
+
+class com.pluralsight.userinterface.method.addDrink.DrinkView {
+- Scanner s
++ void addDrink(Order)
+- double getDrinkPrice(DrinkSize)
++ DrinkSize getDrinkSizeFromUser()
++ DrinkType drinkType()
 }
 
 
@@ -72,8 +98,28 @@ enum com.pluralsight.sandwich.BreadType {
 
 abstract class com.pluralsight.toppings.PremiumTopping {
 # double price
-+ <<Create>> PremiumTopping(SandwichSize,boolean)
 + double getPrice()
+}
+
+
+class com.pluralsight.userinterface.method.addSandwich.SandwichView {
+- List<Topping> toppings
+~ ArrayList<MeatType> meatTypes
+~ ArrayList<CheeseType> cheeseTypes
+~ ArrayList<RegularToppingType> regularToppingTypes
+~ Scanner s
++ void addSandwich(Order)
+- SandwichSize chooseSandwichSize()
+- BreadType chooseBreadType()
++ {static} double getMeatPriceBySize(SandwichSize)
+- void chooseOneOrMoreMeatTypes(SandwichSize)
+- boolean itsAnInteger(String)
+- boolean askUserIfTheyWantExtra(SandwichSize)
++ {static} double getExtraMeatPrice(SandwichSize)
+- void chooseOneOrMoreCheeseTypes(SandwichSize)
+- {static} double getCheesePriceBySandwichSize(SandwichSize)
+- void chooseToppings()
++ boolean isToasted()
 }
 
 
@@ -83,28 +129,39 @@ class com.pluralsight.sandwich.Program {
 
 interface com.pluralsight.sandwich.Product {
 ~ double getPrice()
+~ String getStringForReceipt()
 }
 
 class com.pluralsight.toppings.Meat {
-- TypeOfMeat meatType
-+ <<Create>> Meat(SandwichSize,boolean,TypeOfMeat)
+- MeatType meatType
 + double getPrice()
-+ TypeOfMeat getMeatType()
++ String getStringForReceipt()
++ MeatType getMeatType()
 }
 
 
 class com.pluralsight.orders.Order {
 - ArrayList<Product> items
-- double totalPrice
-+ <<Create>> Order()
 + void addItem(Product)
-+ double getTotalPrice()
++ double getPrice()
++ String getStringForReceipt()
 + String toString()
 }
 
 
 enum com.pluralsight.drinks.DrinkType {
++  Lemonade
++  Coke
++  Pepsi
++  Sprite
++  FRUIT_PUNCH
++  SPRITE
++  PEPSI
++  COKE
++  LEMONADE
++  Fruit_punch
 }
+
 enum com.pluralsight.sandwich.SandwichSize {
 +  SMALL
 +  MEDIUM
@@ -113,13 +170,13 @@ enum com.pluralsight.sandwich.SandwichSize {
 
 class com.pluralsight.chips.Chips {
 - ChipsType type
-+ <<Create>> Chips(ChipsType)
 + double getPrice()
++ String getStringForReceipt()
 + String toString()
 }
 
 
-enum com.pluralsight.toppings.TypeOfCheese {
+enum com.pluralsight.toppings.CheeseType {
 +  AMERICAN
 +  PROVOLONE
 +  CHEDDAR
@@ -130,30 +187,23 @@ class com.pluralsight.sandwich.Sandwich {
 - SandwichSize size
 - BreadType bread
 - List<Topping> toppings
-- List<RegularTop> regToppings
+- List<MeatType> meatTypes
+- List<CheeseType> cheeseTypes
+- List<RegularToppingType> regToppings
 - boolean isToasted
-+ <<Create>> Sandwich(SandwichSize,BreadType,List<Topping>,boolean,List<RegularTop>)
++ void addTopping(Topping)
 + double getPrice()
 - double getBreadPrice()
 + String toString()
++ String getStringForReceipt()
 }
 
-
-enum com.pluralsight.toppings.TypeOfMeat {
-+  STEAK
-+  HAM
-+  SALAMI
-+  ROAST_BEEF
-+  CHICKEN
-+  BACON
-}
 
 class com.pluralsight.drinks.Drink {
-- DrinkSize Drinksize
+- DrinkSize drinkSize
 - DrinkType drinkType
-+ <<Create>> Drink(DrinkSize,DrinkType)
++ String getStringForReceipt()
 + double getPrice()
-+ double getDrinkPrice()
 + String toString()
 }
 

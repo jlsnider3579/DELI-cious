@@ -37,13 +37,13 @@ public class DrinkView {
         return drinkPrice;
     }
 
-    // This method handles the selection of drink size
+    // This method handles the selection of drink size using a do-while loop
     public DrinkSize getDrinkSizeFromUser() {
         DrinkSize selectedDrinkSize = null;
-        boolean validInput = false;
-        double drinkPrice = 0;
+        boolean validInput;
+        double drinkPrice;
 
-        while (!validInput) {
+        do {
             System.out.println("""
                     Please select your drink size:
                     1. Small
@@ -55,40 +55,45 @@ public class DrinkView {
                 int drinkSizeChoice = s.nextInt();
                 s.nextLine(); // Consume the newline character
 
+                validInput = true; // Assume input is valid unless proven otherwise
+
                 switch (drinkSizeChoice) {
                     case 1 -> {
                         selectedDrinkSize = DrinkSize.SMALL;
-                        validInput = true;
-                        System.out.println("You selected Small for $" + getDrinkPrice(selectedDrinkSize));
+                        drinkPrice = getDrinkPrice(selectedDrinkSize);
+                        System.out.println("You selected Small for $" + drinkPrice);
                     }
                     case 2 -> {
                         selectedDrinkSize = DrinkSize.MEDIUM;
-                        validInput = true;
-                        System.out.println("You selected Medium for $" + getDrinkPrice(selectedDrinkSize));
+                        drinkPrice = getDrinkPrice(selectedDrinkSize);
+                        System.out.println("You selected Medium for $" + drinkPrice);
                     }
                     case 3 -> {
                         selectedDrinkSize = DrinkSize.LARGE;
-                        validInput = true;
-                        System.out.println("You selected Large for $" + getDrinkPrice(selectedDrinkSize));
+                        drinkPrice = getDrinkPrice(selectedDrinkSize);
+                        System.out.println("You selected Large for $" + drinkPrice);
                     }
-                    default -> System.out.println("Invalid input, please choose a number between 1 and 3.");
+                    default -> {
+                        System.out.println("Invalid input, please choose a number between 1 and 3.");
+                        validInput = false; // Set validInput to false if input is invalid
+                    }
                 }
-                System.out.println(selectedDrinkSize);
             } else {
                 System.out.println("Invalid input, please enter a number.");
-                //s.nextLine();  // Clear the invalid input
+                s.nextLine(); // Clear invalid input
+                validInput = false;
             }
-        }
+        } while (!validInput); // Repeat until input is valid
 
         return selectedDrinkSize;
     }
 
-    // This method handles the selection of drink type
+    // This method handles the selection of drink type using a do-while loop
     public DrinkType drinkType() {
         DrinkType selectedDrinkType = null;
-        boolean validInput = false;
+        boolean validInput;
 
-        while (!validInput) {
+        do {
             System.out.println("""
                     Select your desired drink:
                     1. Lemonade
@@ -102,40 +107,42 @@ public class DrinkView {
                 int drinkChoice = s.nextInt();
                 s.nextLine();  // Consume the newline character
 
+                validInput = true; // Assume input is valid unless proven otherwise
+
                 switch (drinkChoice) {
 
                     case 1 -> {
                         selectedDrinkType = DrinkType.LEMONADE;
-                        validInput = true;
                     }
 
                     case 2 -> {
                         selectedDrinkType = DrinkType.COKE;
-                        validInput = true;
                     }
 
                     case 3 -> {
                         selectedDrinkType = DrinkType.PEPSI;
-                        validInput = true;
                     }
 
                     case 4 -> {
                         selectedDrinkType = DrinkType.SPRITE;
-                        validInput = true;
                     }
 
                     case 5 -> {
                         selectedDrinkType = DrinkType.FRUIT_PUNCH;
-                        validInput = true;
                     }
 
-                    default -> System.out.println("Invalid input, please choose a number between 1 and 5.");
+                    default -> {
+                        System.out.println("Invalid input, please choose a number between 1 and 5.");
+                        validInput = false; // Set validInput to false if input is invalid
+                    }
                 }
+
             } else {
                 System.out.println("Invalid input, please enter a number.");
-                s.nextLine();  // Clear the invalid input
+                s.nextLine();  // Clear invalid input
+                validInput = false;
             }
-        }
+        } while (!validInput); // Repeat until input is valid
 
         return selectedDrinkType;
     }

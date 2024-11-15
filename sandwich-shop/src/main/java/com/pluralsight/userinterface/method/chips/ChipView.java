@@ -54,7 +54,7 @@ public class ChipView {
 
         // After valid input, you can now use the `selectedChip` object
         if (selectedChip != null) {
-            System.out.println("You selected: " + selectedChip.getCsvString());
+            System.out.println("You selected: " + selectedChip.getStringForReceipt());
         }
     }
 }

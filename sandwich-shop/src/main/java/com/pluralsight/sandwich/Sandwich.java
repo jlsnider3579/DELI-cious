@@ -16,6 +16,15 @@ public class Sandwich implements Product {
     private List<RegularToppingType> regToppings;
     private boolean isToasted;
 
+    public Sandwich(SandwichSize size, BreadType bread) {
+        this.size = size;
+        this.bread = bread;
+    }
+
+    public void addTopping(Topping t) {
+        toppings.add(t);
+    }
+
     // Constructor for creating a Sandwich object with all its properties
     public Sandwich(SandwichSize size, BreadType bread, List<Topping> toppings, boolean isToasted, List<MeatType> meatTypes, List<CheeseType> cheeseTypes, List<RegularToppingType> regToppings) {
         this.size = size;
@@ -35,13 +44,14 @@ public class Sandwich implements Product {
 
         double price = 0;
 
+        // Add the price of the bread to the total price.
+        // getBreadPrice() presumably calculates the price of the bread based on size or type.
         price += getBreadPrice();  // Base price for the bread based on size
 
 
-        // get meats price
-
-
-        //get cheese
+        for (Topping t : toppings) {
+            price += t.getPrice();
+        }
 
 
         return price;
@@ -77,19 +87,22 @@ public class Sandwich implements Product {
     }
 
     @Override
-    public String getCsvString() {
-        StringBuilder sB = new StringBuilder();
+    public String getStringForReceipt() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(bread).append("\n").append(size).append("\n");
+
         for (MeatType m : meatTypes)
             // TODO make sure that csv representation is formatted
-            sB.append(String.format("%s \n", m));
+            sb.append(String.format("%s \n", m));
 
         for (CheeseType c : cheeseTypes)
-            sB.append(String.format("%s \n", c));
+            sb.append(String.format("%s \n", c));
 
         for (RegularToppingType r : regToppings)
-            sB.append(String.format("%s \n", r));
+            sb.append(String.format("%s \n", r));
 
-        return sB.toString();
+        return sb.toString();
 
 
     }

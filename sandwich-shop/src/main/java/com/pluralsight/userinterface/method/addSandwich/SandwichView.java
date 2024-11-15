@@ -10,54 +10,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// Method to add a sandwich to an order
 public class SandwichView {
-    private List<Topping> toppings = new ArrayList<>();
+    private final List<Topping> toppings = new ArrayList<>();
     ArrayList<MeatType> meatTypes = new ArrayList<>();
     ArrayList<CheeseType> cheeseTypes = new ArrayList<>();
-    ArrayList<RegularToppingType> regToppings = new ArrayList<>();
+    ArrayList<RegularToppingType> regularToppingTypes = new ArrayList<>();
     Scanner s = new Scanner(System.in);
 
     public void addSandwich(Order order) {
         BreadType bread = chooseBreadType();
         SandwichSize sandwichSize = chooseSandwichSize();
-        chooseMeatType(sandwichSize);
-        chooseCheeseType(sandwichSize);
+
+        // Allow the user to choose meats, cheese, and toppings
+        chooseOneOrMoreMeatTypes(sandwichSize);
+        chooseOneOrMoreCheeseTypes(sandwichSize);
         chooseToppings();
-        Sandwich sandwich = new Sandwich(sandwichSize, bread, toppings, isToasted(), meatTypes, cheeseTypes, regToppings);
+
+        // Create a new sandwich object with all selected options
+        Sandwich sandwich = new Sandwich(sandwichSize, bread, toppings, isToasted(), meatTypes, cheeseTypes, regularToppingTypes);
         System.out.println(sandwich);
         order.addItem(sandwich);
     }
 
-    public static double getSandwichSizePrice(SandwichSize sandwichSize) {
-        double breadSizePrice = 0;
-        switch (sandwichSize) {
-
-            case SMALL -> {
-                breadSizePrice = 5.50;
-                System.out.println(" $ " + breadSizePrice);
-            }
-
-            case MEDIUM -> {
-                breadSizePrice = 7.00;
-                System.out.println(" $ " + breadSizePrice);
-            }
-
-            case LARGE -> {
-                breadSizePrice = 8.50;
-                System.out.println(" $ " + breadSizePrice);
-            }
-        }
-
-
-        return breadSizePrice;
-    }
-
+    // Method to let the user choose a sandwich size
     private SandwichSize chooseSandwichSize() {
         double breadSizePrice = 0;
         SandwichSize selectedSandwichSize = null;
         boolean validInput = false;
 
-
+        // Keep asking the user until a valid input is received
         while (!validInput) {
             System.out.println("""
                     \nSelect your desired bread size:
@@ -71,26 +53,34 @@ public class SandwichView {
                 int breadChoice = s.nextInt();
                 s.nextLine();   // Clear the newline character
 
-
+                // Assign the appropriate sandwich size based on user input
                 switch (breadChoice) {
 
                     case 1 -> {
                         selectedSandwichSize = SandwichSize.SMALL;
                         validInput = true;
-                        breadSizePrice = getSandwichSizePrice(selectedSandwichSize);
+                        breadSizePrice = 5.50;
+                        System.out.println(" $ " + breadSizePrice);
+
                     }
                     case 2 -> {
                         selectedSandwichSize = SandwichSize.MEDIUM;
                         validInput = true;
-                        breadSizePrice = getSandwichSizePrice(selectedSandwichSize);
+                        breadSizePrice = 7.00;
+                        System.out.println(" $ " + breadSizePrice);
+
                     }
                     case 3 -> {
                         selectedSandwichSize = SandwichSize.LARGE;
                         validInput = true;
-                        breadSizePrice = getSandwichSizePrice(selectedSandwichSize);
+                        breadSizePrice = 8.50;
+                        System.out.println(" $ " + breadSizePrice);
                     }
+
                     default -> System.out.println("Invalid choice, please choose a number between 1 and 3.");
+
                 }
+
             } else {
                 System.out.println("Invalid input, please enter a number.");
                 s.nextLine();  // Clear the invalid input
@@ -101,13 +91,13 @@ public class SandwichView {
         return selectedSandwichSize;
     }
 
-
+    // Method to let the user choose a bread type
     private BreadType chooseBreadType() {
 
         BreadType selectedBreadType = null;
         boolean validInput = false;
 
-
+        // Keep asking the user until a valid input is received
         while (!validInput) {
             System.out.println("""
                     \nSelect your desired bread type:
@@ -122,6 +112,7 @@ public class SandwichView {
                 int breadChoice = s.nextInt();
                 s.nextLine();  // Clear the newline character
 
+                // Assign the appropriate bread type based on user input
                 switch (breadChoice) {
 
                     case 1 -> {
@@ -151,7 +142,7 @@ public class SandwichView {
         System.out.println("You selected " + selectedBreadType + " BREAD ");
         return selectedBreadType;
     }
-
+    // Method to determine the price of meat based on sandwich size
     public static double getMeatPriceBySize(SandwichSize sandwichSize) {
         double meatPrice = 0;
         switch (sandwichSize) {
@@ -175,12 +166,12 @@ public class SandwichView {
         return meatPrice;
     }
 
-    private void chooseMeatType(SandwichSize sandwichSize) {
+    private void chooseOneOrMoreMeatTypes(SandwichSize sandwichSize) {
         MeatType selectedMeatType = null;
-        boolean validInput = false;
+        boolean tryAgain = true;
         double meatPrice = 0;
 
-        while (!validInput) {
+        do {
             System.out.println("""
                     \nSelect your desired type of meat:
                     
@@ -194,67 +185,66 @@ public class SandwichView {
                     6) BACON
                     """);
 
-            if (s.hasNextLine()) {
-                String[] meatChoices = s.nextLine().split(",");
-                for (int i = 0; i < meatChoices.length; i++) {
-                    int meatChoice;
 
-                    try {
-                        meatChoice = Integer.parseInt(meatChoices[i]);
+            // Read the next line of input
+            String inputString = s.nextLine();
+            // Try to split it
+            String[] meatChoices = inputString.split(",");
 
 
-                        switch (meatChoice) {
+            for (int i = 0; i < meatChoices.length; i++) {
 
-                            case 1 -> {
-                                meatTypes.add(MeatType.STEAK);
-                                validInput = true;
-                                meatPrice += getMeatPriceBySize(sandwichSize);
-                            }
+                int meatChoice = Integer.parseInt(meatChoices[i]);
+                MeatType meatType = null;
 
-                            case 2 -> {
-                                meatTypes.add(MeatType.HAM);
-                                validInput = true;
-                                meatPrice += getMeatPriceBySize(sandwichSize);
-                            }
-
-                            case 3 -> {
-                                meatTypes.add(MeatType.SALAMI);
-                                validInput = true;
-                                meatPrice += getMeatPriceBySize(sandwichSize);
-                            }
-
-                            case 4 -> {
-                                meatTypes.add(MeatType.ROAST_BEEF);
-                                validInput = true;
-                                meatPrice += getMeatPriceBySize(sandwichSize);
-                            }
-                            case 5 -> {
-                                meatTypes.add(MeatType.CHICKEN);
-                                validInput = true;
-                                meatPrice += getMeatPriceBySize(sandwichSize);
-                            }
-                            case 6 -> {
-                                meatTypes.add(MeatType.BACON);
-                                validInput = true;
-                                meatPrice += getMeatPriceBySize(sandwichSize);
-                            }
-
-                            default -> System.out.println("Invalid choice, please choose a number between 1 and 6.");
-                        }
-                    } catch (NumberFormatException nFE) {
-                        System.out.println("Invalid input try again");
-
+                switch (meatChoice) {
+                    case 1 -> {
+                        meatType = MeatType.STEAK;
+                    }
+                    case 2 -> {
+                        meatType = MeatType.HAM;
+                    }
+                    case 3 -> {
+                        meatType = MeatType.SALAMI;
+                    }
+                    case 4 -> {
+                        meatType = MeatType.ROAST_BEEF;
+                    }
+                    case 5 -> {
+                        meatType = MeatType.CHICKEN;
+                    }
+                    case 6 -> {
+                        meatType = MeatType.BACON;
+                    }
+                    default -> {
+                        System.out.println("Invalid choice, please choose a number between 1 and 6.");
+                        tryAgain = true;
+                        break;
                     }
                 }
-                System.out.println(meatPrice);
 
-            } else {
-                System.out.println("Invalid input, please enter a number.");
-                s.nextLine();  // Clear the invalid input
+                if( meatType == null) continue;
+
+                Meat m = new Meat(sandwichSize, false, meatType);
+                toppings.add(m);
+                meatTypes.add(meatType);
+                System.out.println("You selected: " + meatType);
+                boolean hasExtra = askUserIfTheyWantExtra(sandwichSize);
+                m.setHasExtra(hasExtra);
+                meatPrice +=  m.getPrice();
             }
-            System.out.println("You selected" + meatTypes);
-        }
 
+            System.out.println(meatPrice);
+            tryAgain = false;
+
+
+        } while (tryAgain);
+
+    }
+
+
+    private boolean askUserIfTheyWantExtra(SandwichSize sandwichSize) {
+        boolean validInput;
         double extraMeatPrice = 0;
         boolean hasExtra = false;
         System.out.println("""
@@ -287,9 +277,7 @@ public class SandwichView {
             System.out.println("Invalid input please choose a number ");
             s.nextLine();
         }
-
-        toppings.add(new Meat(sandwichSize, hasExtra, selectedMeatType));
-
+        return hasExtra;
     }
 
     public static double getExtraMeatPrice(SandwichSize sandwichSize) {
@@ -316,7 +304,7 @@ public class SandwichView {
         return extraMeatPrice;
     }
 
-    private void chooseCheeseType(SandwichSize sandwichSize) {
+    private void chooseOneOrMoreCheeseTypes(SandwichSize sandwichSize) {
 
         CheeseType selectedCheeseType = null;
         boolean validInput = false;
@@ -485,57 +473,57 @@ public class SandwichView {
 
                         switch (toppingChoice) {
                             case 1 -> {
-                                regToppings.add(RegularToppingType.LETTUCE);
+                                regularToppingTypes.add(RegularToppingType.LETTUCE);
                                 validInput = true;
                             }
 
                             case 2 -> {
-                                regToppings.add(RegularToppingType.PEPPERS);
+                                regularToppingTypes.add(RegularToppingType.PEPPERS);
                                 validInput = true;
                             }
 
                             case 3 -> {
-                                regToppings.add(RegularToppingType.ONIONS);
+                                regularToppingTypes.add(RegularToppingType.ONIONS);
                                 validInput = true;
                             }
 
                             case 4 -> {
-                                regToppings.add(RegularToppingType.TOMATOES);
+                                regularToppingTypes.add(RegularToppingType.TOMATOES);
                                 validInput = true;
                             }
 
                             case 5 -> {
-                                regToppings.add(RegularToppingType.JALEPENOS);
+                                regularToppingTypes.add(RegularToppingType.JALEPENOS);
                                 validInput = true;
                             }
 
                             case 6 -> {
-                                regToppings.add(RegularToppingType.CUCUMBERS);
+                                regularToppingTypes.add(RegularToppingType.CUCUMBERS);
                                 validInput = true;
                             }
 
                             case 7 -> {
-                                regToppings.add(RegularToppingType.PICKLES);
+                                regularToppingTypes.add(RegularToppingType.PICKLES);
                                 validInput = true;
                             }
 
                             case 8 -> {
-                                regToppings.add(RegularToppingType.GUACAMOLE);
+                                regularToppingTypes.add(RegularToppingType.GUACAMOLE);
                                 validInput = true;
                             }
 
                             case 9 -> {
-                                regToppings.add(RegularToppingType.MUSHROOMS);
+                                regularToppingTypes.add(RegularToppingType.MUSHROOMS);
                                 validInput = true;
                             }
 
                             case 10 -> {
-                                regToppings.add(RegularToppingType.MAYO);
+                                regularToppingTypes.add(RegularToppingType.MAYO);
                                 validInput = true;
                             }
 
                             case 11 -> {
-                                regToppings.add(RegularToppingType.MUSTARD);
+                                regularToppingTypes.add(RegularToppingType.MUSTARD);
                                 validInput = true;
                             }
 
@@ -548,7 +536,7 @@ public class SandwichView {
                 System.out.println("Invalid input, please enter a number.");
                 s.nextLine();  // Clear the invalid input
             }
-            System.out.println(regToppings);
+            System.out.println(regularToppingTypes);
 
         }
     }

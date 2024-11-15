@@ -16,6 +16,7 @@ public class Cheese extends PremiumTopping {
     }
 
     // Override the getPrice() method to calculate the price of the cheese topping based on the sandwich size.
+    @Override
     public double getPrice() {
         switch (size) {
             case SMALL -> {
@@ -34,7 +35,7 @@ public class Cheese extends PremiumTopping {
     }
 
     @Override
-    public String getCsvString() {
+    public String getStringForReceipt() {
         // TODO - fix this to return proper string for receipt
         return "";
     }

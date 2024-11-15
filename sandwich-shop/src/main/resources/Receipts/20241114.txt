@@ -1,1 +1,10 @@
-total price: $0.00 
+RYE
+MEDIUM
+STEAK 
+BACON 
+AMERICAN 
+CHEDDAR 
+LETTUCE 
+PEPPERS 
+ONIONS 
+total price: $12.50

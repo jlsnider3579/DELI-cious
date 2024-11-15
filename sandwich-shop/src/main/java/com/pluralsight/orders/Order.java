@@ -7,8 +7,7 @@ import java.util.ArrayList;
 // The Order class represents a customer's order, which consists of multiple items (products).
 // It calculates the total price of all items added to the order and provides a string representation of the order.
 public class Order {
-    private ArrayList<Product> items;
-    private double totalPrice;
+    private final ArrayList<Product> items;
 
     // Constructor to create an empty order.
     public Order() {
@@ -22,19 +21,19 @@ public class Order {
 
     // Method to calculate the total price of the order by summing the prices of all items.
     // Loop through each item in the order and add its price to the total price.
-    public double getTotalPrice() {
-        totalPrice = 0;
+    public double getPrice() {
+        double totalPrice = 0;
         for (Product item : items) {
             totalPrice += item.getPrice();
         }
         return totalPrice;
     }
 
-
-    public String toCsvString(){
+    // Generates a formatted receipt
+    public String getStringForReceipt(){
         StringBuilder sB = new StringBuilder();
         for (Product p: items) {
-            sB.append(p.getCsvString());
+            sB.append(p.getStringForReceipt());
         }
 
         return sB.toString();
@@ -42,6 +41,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order with total price: " + getTotalPrice();
+        return "Order with total price: " + getPrice();
     }
 }

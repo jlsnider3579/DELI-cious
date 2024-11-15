@@ -21,7 +21,7 @@ public class Chips implements Product {
     }
 
     @Override
-    public String getCsvString() {
+    public String getStringForReceipt() {
         return "Chips: \n" + type + " \n$ " + getPrice();
     }
 

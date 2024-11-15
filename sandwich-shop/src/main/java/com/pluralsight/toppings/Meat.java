@@ -16,6 +16,7 @@ public class Meat extends PremiumTopping {
     }
 
     // Set the base price for meat based on the sandwich size
+    @Override
     public double getPrice() {
         switch (size) {
             case SMALL:
@@ -30,7 +31,7 @@ public class Meat extends PremiumTopping {
     }
 
     @Override
-    public String getCsvString() {
+    public String getStringForReceipt() {
         // TODO fix this
         return " meat type, has extra, price";
     }
