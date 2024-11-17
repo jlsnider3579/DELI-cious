@@ -1,1 +1,4 @@
-Sandwich: SMALL | Bread: WHITE | Meats: [STEAK] | Cheeses: [AMERICAN] | Toppings: [LETTUCE] | Toasted: Yes | Price: $7.25total price: $7.25 
+Drink: LEMONADE
+Size: SMALL
+Price: $2.0
+total price: $2.00 

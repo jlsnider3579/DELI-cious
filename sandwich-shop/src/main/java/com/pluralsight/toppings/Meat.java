@@ -8,7 +8,7 @@ import com.pluralsight.sandwich.SandwichSize;
 // Additionally, it keeps track of the type of meat used in the sandwich.
 public class Meat extends PremiumTopping {
     private final MeatType meatType;
-    private boolean hasExtra;
+
 
     // Constructor for creating a Meat object with a specific sandwich size, extra flag, and meat type.
     public Meat(SandwichSize size, boolean hasExtra, MeatType meatType) {
@@ -25,23 +25,33 @@ public class Meat extends PremiumTopping {
     public double getPrice() {
         switch (size) {
             case SMALL:
-                return 1.00;
+                if (hasExtra) {
+                    return 1.50;
+                } else
+                    return 1.00;
             case MEDIUM:
-                return 2.00;
+                if (hasExtra) {
+                    return 3.00;
+                } else
+                    return 2.00;
             case LARGE:
-                return 3.00;
-            default:
-                return 0.0;
+                if (hasExtra) {
+                    return 4.50;
+                } else {
+                    return 3.00;
+                }
+                    default:
+                        return 0.0;
+                }
+        }
+
+        @Override
+        public String getStringForReceipt () {
+
+            return " meat type, has extra, price";
+        }
+
+        public MeatType getMeatType () {
+            return meatType;
         }
     }
-
-    @Override
-    public String getStringForReceipt() {
-
-        return " meat type, has extra, price";
-    }
-
-    public MeatType getMeatType() {
-        return meatType;
-    }
-}
