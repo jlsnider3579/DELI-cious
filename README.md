@@ -30,7 +30,7 @@
 ####### 5. User Interface
 * UserInterface - Main interface for user interactions, with options for adding sandwiches, drinks, chips, checking out, and viewing orders.
 * SandwichView, DrinkView, ChipView - Specialized views for customizing each item type.
-########6. Product Management
+######## 6. Product Management
 * Product - Abstract class for all items that can be part of an order, such as sandwiches, drinks, and chips.
 ######### Features
 * Create and Customize Sandwiches - Select bread type, size, meat, cheese, and toppings.
