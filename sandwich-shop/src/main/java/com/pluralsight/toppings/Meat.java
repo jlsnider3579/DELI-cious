@@ -25,33 +25,23 @@ public class Meat extends PremiumTopping {
     public double getPrice() {
         switch (size) {
             case SMALL:
-                if (hasExtra) {
-                    return 1.50;
-                } else
-                    return 1.00;
+                return hasExtra ? 1.50 : 1.00;
             case MEDIUM:
-                if (hasExtra) {
-                    return 3.00;
-                } else
-                    return 2.00;
+                return hasExtra ? 1.50 : 1.00;
             case LARGE:
-                if (hasExtra) {
-                    return 4.50;
-                } else {
-                    return 3.00;
-                }
-                    default:
-                        return 0.0;
-                }
-        }
-
-        @Override
-        public String getStringForReceipt () {
-
-            return " meat type, has extra, price";
-        }
-
-        public MeatType getMeatType () {
-            return meatType;
+                return hasExtra ? 1.50 : 1.00;
+            default:
+                return 0.0;
         }
     }
+
+    @Override
+    public String getStringForReceipt() {
+
+        return " meat type, has extra, price";
+    }
+
+    public MeatType getMeatType() {
+        return meatType;
+    }
+}
