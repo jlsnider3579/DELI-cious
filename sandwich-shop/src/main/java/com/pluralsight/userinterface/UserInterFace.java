@@ -59,15 +59,16 @@ public class UserInterFace {
             String choice = s.nextLine();
             switch (choice) {
                 case "1":
-                    sandwichView.addSandwich(order);
+                    sandwichView.addSandwichToOrder(order);
                     break;
                 case "2":
-                    drinkView.addDrink(order);
+                    drinkView.addDrinkToOrder(order);
                     break;
                 case "3":
-                    chipView.addChip(order);
+                    chipView.addChipToOrder(order);
                     break;
                 case "4":
+                    sandwichView.checkout(order);
                     DataManager.createReceipt(order);
                     System.out.println("Thank you for you purchase come back soon!!!");
                     break;

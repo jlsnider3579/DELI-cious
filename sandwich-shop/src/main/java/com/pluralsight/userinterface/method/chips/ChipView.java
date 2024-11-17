@@ -7,14 +7,15 @@ import com.pluralsight.orders.Order;
 
 public class ChipView {
     Scanner s = new Scanner(System.in);
+    private final Order currentOrder = new Order();
 
-    public void addChip(Order order) {
+    public void addChipToOrder(Order currentOrder) {
         boolean validInput = false; // Set to false initially to enter the loop
         Chips selectedChip = null;  // This will hold the selected Chips object
-        Chips chips = new Chips(ChipsType.DORITOS);
-        Chips chips1 = new Chips(ChipsType.BBQ);
-        Chips chips2 = new Chips(ChipsType.SALT_N_VINEGAR);
-        Chips chips3 = new Chips(ChipsType.LAYS);
+        Chips chipFlavor1 = new Chips(ChipsType.DORITOS);
+        Chips chipFlavor2 = new Chips(ChipsType.BBQ);
+        Chips chipFlavor3 = new Chips(ChipsType.SALT_N_VINEGAR);
+        Chips chipFlavor4 = new Chips(ChipsType.LAYS);
 
 
         while (!validInput) {
@@ -61,7 +62,7 @@ public class ChipView {
         if (selectedChip != null) {
             System.out.println("You selected: " + selectedChip.getStringForReceipt());
 
-            order.addItem(selectedChip);
+            currentOrder.addItem(selectedChip);
         }
     }
 }

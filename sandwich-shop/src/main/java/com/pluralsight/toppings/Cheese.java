@@ -15,6 +15,10 @@ public class Cheese extends PremiumTopping {
         this.cheeseType = cheeseType;
     }
 
+    public Cheese(CheeseType cheeseType) {
+        super();
+    }
+
     // Override the getPrice() method to calculate the price of the cheese topping based on the sandwich size.
     @Override
     public double getPrice() {

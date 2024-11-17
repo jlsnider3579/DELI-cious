@@ -17,10 +17,11 @@ public class Drink implements Product {
 
     @Override
     public String getStringForReceipt() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(drinkType).append("\n").append(drinkSize);
-        return drinkType + "\n " + drinkSize + "\n$ " + getPrice();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Drink: ").append(drinkType).append("\n")
+                .append("Size: ").append(drinkSize).append("\n")
+                .append("Price: $").append(getPrice()).append("\n");
+        return sb.toString();
 
 
     }

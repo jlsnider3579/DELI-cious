@@ -7,14 +7,6 @@ import com.pluralsight.sandwich.SandwichSize;
 // It represents a topping that can be added to a sandwich (e.g., cheese, lettuce, bacon, etc.).
 // This class provides a structure for defining different types of toppings with specific pricing rules.
 public abstract class Topping implements Product {
-    public boolean isHasExtra() {
-        return hasExtra;
-    }
-
-    public void setHasExtra(boolean hasExtra) {
-        this.hasExtra = hasExtra;
-    }
-
     protected boolean hasExtra;
     protected SandwichSize size;
 
@@ -22,6 +14,10 @@ public abstract class Topping implements Product {
     public Topping(SandwichSize size, boolean hasExtra) {
         this.size = size;
         this.hasExtra = hasExtra;
+    }
+
+    public Topping() {
+
     }
 
     // Abstract method to calculate the price of the topping.

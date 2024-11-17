@@ -30,14 +30,21 @@ public class Order {
     }
 
     // Generates a formatted receipt
-    public String getStringForReceipt(){
-        StringBuilder sB = new StringBuilder();
-        for (Product p: items) {
-            sB.append(p.getStringForReceipt()).append("\n");
-        }
-        return sB.toString();
-    }
+    public String getStringForReceipt() {
+        StringBuilder sb = new StringBuilder();
+        boolean firstItem = true;
 
+        for (Product item : items) {
+            // Add a line break between items (sandwich and drink)
+            if (!firstItem) {
+                sb.append("\n");  // Add a line break between items
+            }
+
+            sb.append(item.getStringForReceipt());
+            firstItem = false; // Mark that the first item has been added
+        }
+        return sb.toString();
+    }
     @Override
     public String toString() {
         return "Order with total price: " + getPrice();

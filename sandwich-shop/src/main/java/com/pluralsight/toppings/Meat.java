@@ -7,12 +7,17 @@ import com.pluralsight.sandwich.SandwichSize;
 // based on the sandwich size and whether it is considered an "extra" topping.
 // Additionally, it keeps track of the type of meat used in the sandwich.
 public class Meat extends PremiumTopping {
-    private MeatType meatType;
+    private final MeatType meatType;
+    private boolean hasExtra;
 
     // Constructor for creating a Meat object with a specific sandwich size, extra flag, and meat type.
     public Meat(SandwichSize size, boolean hasExtra, MeatType meatType) {
         super(size, hasExtra);
         this.meatType = meatType;
+    }
+
+    public void setHasExtra(boolean hasExtra) {
+        this.hasExtra = hasExtra;
     }
 
     // Set the base price for meat based on the sandwich size

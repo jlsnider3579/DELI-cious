@@ -1,39 +1,39 @@
 package com.pluralsight.userinterface.method.addDrink;
 
+import com.pluralsight.orders.Order;
 import com.pluralsight.drinks.Drink;
 import com.pluralsight.drinks.DrinkSize;
 import com.pluralsight.drinks.DrinkType;
-import com.pluralsight.orders.Order;
-
 import java.util.Scanner;
 
 public class DrinkView {
 
-    private Scanner s = new Scanner(System.in);
+    private final Scanner s = new Scanner(System.in);
 
-    // This method handles adding a drink to an order
-    public void addDrink(Order order) {
-        // Collect drink size and type
-        DrinkSize size = getDrinkSizeFromUser();
-        DrinkType type = drinkType();
+    // Method to add a drink to the order
+    public void addDrinkToOrder(Order currentOrder) {
+        // Get the drink size and type from the user
+        DrinkSize sizeOfDrink = getDrinkSizeFromUser();
+        DrinkType typeOfDrink = getDrinkTypeFromUser();
 
-        // Create the Drink object with size and type
-        Drink drink = new Drink(size, type);
+        // Create the Drink object with selected size and type
+        Drink selectedDrink = new Drink(sizeOfDrink, typeOfDrink);
 
-        // Optionally, print drink details or handle the order
-        System.out.println("You added a " + type + " of size " + size + " to your order.");
+        // Add the selected drink to the current order
+        currentOrder.addItem(selectedDrink);
+
+        // Print confirmation message
+        System.out.println("You added a " + typeOfDrink + " of size " + sizeOfDrink + " to your order.");
     }
 
     // This method calculates and returns the price of the selected drink size
     private double getDrinkPrice(DrinkSize drinkSize) {
         double drinkPrice = 0;
-
         switch (drinkSize) {
             case SMALL -> drinkPrice = 2.00;
             case MEDIUM -> drinkPrice = 2.50;
             case LARGE -> drinkPrice = 3.00;
         }
-
         return drinkPrice;
     }
 
@@ -41,7 +41,6 @@ public class DrinkView {
     public DrinkSize getDrinkSizeFromUser() {
         DrinkSize selectedDrinkSize = null;
         boolean validInput;
-        double drinkPrice;
 
         do {
             System.out.println("""
@@ -58,21 +57,9 @@ public class DrinkView {
                 validInput = true; // Assume input is valid unless proven otherwise
 
                 switch (drinkSizeChoice) {
-                    case 1 -> {
-                        selectedDrinkSize = DrinkSize.SMALL;
-                        drinkPrice = getDrinkPrice(selectedDrinkSize);
-                        System.out.println("You selected Small for $" + drinkPrice);
-                    }
-                    case 2 -> {
-                        selectedDrinkSize = DrinkSize.MEDIUM;
-                        drinkPrice = getDrinkPrice(selectedDrinkSize);
-                        System.out.println("You selected Medium for $" + drinkPrice);
-                    }
-                    case 3 -> {
-                        selectedDrinkSize = DrinkSize.LARGE;
-                        drinkPrice = getDrinkPrice(selectedDrinkSize);
-                        System.out.println("You selected Large for $" + drinkPrice);
-                    }
+                    case 1 -> selectedDrinkSize = DrinkSize.SMALL;
+                    case 2 -> selectedDrinkSize = DrinkSize.MEDIUM;
+                    case 3 -> selectedDrinkSize = DrinkSize.LARGE;
                     default -> {
                         System.out.println("Invalid input, please choose a number between 1 and 3.");
                         validInput = false; // Set validInput to false if input is invalid
@@ -89,7 +76,7 @@ public class DrinkView {
     }
 
     // This method handles the selection of drink type using a do-while loop
-    public DrinkType drinkType() {
+    public DrinkType getDrinkTypeFromUser() {
         DrinkType selectedDrinkType = null;
         boolean validInput;
 
@@ -110,27 +97,11 @@ public class DrinkView {
                 validInput = true; // Assume input is valid unless proven otherwise
 
                 switch (drinkChoice) {
-
-                    case 1 -> {
-                        selectedDrinkType = DrinkType.LEMONADE;
-                    }
-
-                    case 2 -> {
-                        selectedDrinkType = DrinkType.COKE;
-                    }
-
-                    case 3 -> {
-                        selectedDrinkType = DrinkType.PEPSI;
-                    }
-
-                    case 4 -> {
-                        selectedDrinkType = DrinkType.SPRITE;
-                    }
-
-                    case 5 -> {
-                        selectedDrinkType = DrinkType.FRUIT_PUNCH;
-                    }
-
+                    case 1 -> selectedDrinkType = DrinkType.LEMONADE;
+                    case 2 -> selectedDrinkType = DrinkType.COKE;
+                    case 3 -> selectedDrinkType = DrinkType.PEPSI;
+                    case 4 -> selectedDrinkType = DrinkType.SPRITE;
+                    case 5 -> selectedDrinkType = DrinkType.FRUIT_PUNCH;
                     default -> {
                         System.out.println("Invalid input, please choose a number between 1 and 5.");
                         validInput = false; // Set validInput to false if input is invalid

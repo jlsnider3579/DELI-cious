@@ -14,6 +14,10 @@ public abstract class PremiumTopping extends Topping {
         this.price = price;
     }
 
+    public PremiumTopping() {
+
+    }
+
 
     @Override
     public double getPrice() {
