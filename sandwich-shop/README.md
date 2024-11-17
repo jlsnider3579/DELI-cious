@@ -27,10 +27,11 @@
 ###### 4. Drinks and Chips
 * Drink - Represents a drink item with types (e.g., Cola, Lemonade) and sizes (Small, Medium, Large).
 * Chips - Represents a chips item with types like LAYS, DORITOS, and BBQ.
-####### 5. User Interface
+
+### 5. **User Interface**
 * UserInterface - Main interface for user interactions, with options for adding sandwiches, drinks, chips, checking out, and viewing orders.
 * SandwichView, DrinkView, ChipView - Specialized views for customizing each item type.
-########6. Product Management
+######## 6. Product Management
 * Product - Abstract class for all items that can be part of an order, such as sandwiches, drinks, and chips.
 ######### Features
 * Create and Customize Sandwiches - Select bread type, size, meat, cheese, and toppings.
