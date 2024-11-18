@@ -180,6 +180,7 @@ public class SandwichView {
         do {
             System.out.println("""
                     \nSelect your desired type of meat:
+                    You may select one or more by adding a comma (,)
                     1) STEAK
                     2) HAM
                     3) SALAMI
@@ -290,6 +291,7 @@ public class SandwichView {
         do {
             System.out.println("""
                     \nSelect your desired type of cheese
+                    You may select one or more by adding a comma (,)
                     1) American
                     2) Provolone
                     3) Cheddar
@@ -331,6 +333,7 @@ public class SandwichView {
         do {
             System.out.println("""
                     \nSelect your desired Toppings
+                    You may select one or more by adding a comma (,)
                     1. Lettuce
                     2. Peppers
                     3. Onions
